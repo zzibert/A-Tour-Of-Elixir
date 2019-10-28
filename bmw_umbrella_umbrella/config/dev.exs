@@ -47,8 +47,6 @@ config :kafka_ex,
   use_ssl: false,
   kafka_version: "0.10.0"
 
-
-
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
