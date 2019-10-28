@@ -1,13 +1,12 @@
 defmodule BmwUmbrella.ClientApi do
-  @api_key Application.get_env(:client, :api_key)
-  @base_url "https://api.bmwgroup.com/otpcapability/api/thirdparty/v1/test"
+  @api_key Application.get_env(:bmw_umbrella, :api_key)
+  @base_url "https://api.bmwgroup.com"
   @test_clearance_id "11111111-1111-1111-1111-111111111113"
-  @headers [KeyId: @api_key, "Content-Type": "application/json"]
+  @headers ["KeyId": @api_key, "Content-Type": "application/json"]
 
   def request_data_acces_clearance(vin, container_id) do
-    (@base_url <>
-       "/otpclearance/api/thirdparty/v1/test/applications/containers/" <>
-       container_id <> "/vehicles/" <> vin <> "/clearances")
+    # (@base_url <> "/otpclearance/api/thirdparty/v1/test/applications/containers/" <> container_id <> "/vehicles/" <> vin <> "/clearances")
+    "https://api.bmwgroup.com/otpclearance/api/thirdparty/v1/test/applications/containers/S00I000M001OK/vehicles/WBAVB71470VOTP000/clearances"
     |> post("", @headers)
   end
 
@@ -43,8 +42,8 @@ defmodule BmwUmbrella.ClientApi do
       {:ok, %HTTPoison.Response{status_code: code, body: body}} when code >= 200 and code < 300 ->
         Poison.decode(body)
 
-      {:ok, %HTTPoison.Response{body: body}} ->
-        {:error, body}
+      {:ok, %HTTPoison.Response{body: body, status_code: code}} ->
+        {:error, body, code}
 
       {:error, _} = response ->
         response
