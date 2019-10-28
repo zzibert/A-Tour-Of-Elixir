@@ -1,0 +1,3 @@
+#Ignore the config folder in bmw umbrella
+bmw_umbrella_umbrella/config/
+

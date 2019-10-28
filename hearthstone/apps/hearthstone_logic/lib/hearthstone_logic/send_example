@@ -1,0 +1,18 @@
+defmodule Test do
+use GenServer
+def start_link do
+GenServer.start_link(__MODULE__, [])
+end
+def init([]) do
+if Mix.env() != :test do
+Process.send_after(self, :add_state, 1000)
+end
+{:ok, %State{status: :pending}}
+end
+def handle_info(:add_state, state)
+do
+{:noreply, %State{state | status: :active}}
+end
+end
+
+defmodule 

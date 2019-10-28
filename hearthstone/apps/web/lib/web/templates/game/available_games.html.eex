@@ -1,0 +1,6 @@
+<section class="phx-hero">
+  <h1>Available Games!</h1>
+  <%= for game <- @games do %>   
+        <button><div> <%= game %> </div></button>
+    <% end %>
+</section>

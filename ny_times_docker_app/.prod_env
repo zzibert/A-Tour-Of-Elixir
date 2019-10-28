@@ -1,0 +1,4 @@
+POSTGRES_USER=master
+POSTGRES_PASSWORD=zahtevno_geslo
+POSTGRES_DB=prod
+POSTGRES_HOST=localhost

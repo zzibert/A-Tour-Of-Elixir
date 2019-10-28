@@ -1,0 +1,6 @@
+<section class="phx-hero">
+    <h1>Cards</h1>
+    <%= for card <- @cards do %>   
+        <button><div> <%= card.name %> </div></button>
+    <% end %>
+</section>

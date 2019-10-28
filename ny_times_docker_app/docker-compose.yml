@@ -1,0 +1,30 @@
+version: "3"
+services:
+  postgres-prod:
+    container_name: postgres-prod
+    image: "postgres:11.5-alpine"
+    env_file:
+      - .prod_env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+      
+  elixir-app:
+    build:
+      context: ./ny_times_api
+      args:
+        - POSTGRES_HOST=postgres-prod
+        - POSTGRES_PASSWORD=zahtevno_geslo
+        - POSTGRES_DB=prod
+        - POSTGRES_USER=master
+    depends_on:
+      ["postgres-prod"]
+    links:
+      - postgres-prod:db
+    environment:
+        - POSTGRES_HOST=postgres-prod
+        - POSTGRES_PASSWORD=zahtevno_geslo
+        - POSTGRES_DB=prod
+        - POSTGRES_USER=master

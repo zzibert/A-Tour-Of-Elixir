@@ -1,0 +1,5 @@
+# Configuration files for production
+production.configs/*
+
+# Configuration files for staging
+staging.conigs/*

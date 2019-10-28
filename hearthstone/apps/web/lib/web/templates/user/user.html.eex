@@ -1,0 +1,12 @@
+<section class="phx-hero">
+    <h1>Choose two users</h1>
+    <%= for user <- @users do %>   
+        <a href="/user/start"><button><div> <%= user.name %> </div></button></a>
+    <% end %>
+</section>
+<section class="phx-hero">
+    <h1>Chosen Users</h1>
+</section>
+<section class="phx-hero">
+    <button>Start Game</button>
+</section>

@@ -1,0 +1,12 @@
+{application,friends,
+             [{applications,[kernel,stdlib,elixir,logger,ecto,postgrex,
+                             ecto_sql]},
+              {description,"friends"},
+              {modules,['Elixir.Friends','Elixir.Friends.Application',
+                        'Elixir.Friends.Character',
+                        'Elixir.Friends.Distributor','Elixir.Friends.Movie',
+                        'Elixir.Friends.Person','Elixir.Friends.Repo',
+                        'Elixir.Friends.User']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {mod,{'Elixir.Friends.Application',[]}}]}.

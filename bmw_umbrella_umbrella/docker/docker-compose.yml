@@ -1,0 +1,48 @@
+version: "3"
+services:
+  dev-database:
+    container_name: dev-postgres
+    image: "postgres:11.5-alpine"
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: zan
+      POSTGRES_PASSWORD: zan
+      POSTGRES_DB: dev
+  zookeeper:
+    image: confluentinc/cp-zookeeper:4.1.2
+    container_name: zookeeper_dev
+    ports:
+     - 32181:32181
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 32181
+      ZOOKEEPER_TICK_TIME: 2000
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 32181 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+  
+  kafka:
+    image: confluentinc/cp-kafka:4.1.2
+    container_name: kafka_dev
+    ports:
+      - '9092:9092'
+    volumes:
+      - ./kafka/wrapper.sh:/wrapper.sh
+    entrypoint: ["sh", "/wrapper.sh"]
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:32181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
+      KAFKA_TOPICS: "cards"
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 9092 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    depends_on:
+      - zookeeper
