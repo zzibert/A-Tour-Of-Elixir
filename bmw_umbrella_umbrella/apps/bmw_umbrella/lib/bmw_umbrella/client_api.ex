@@ -1,10 +1,12 @@
 defmodule BmwUmbrella.ClientApi do
   @api_key Application.get_env(:bmw_umbrella, :api_key)
+
   @otpclearance_base_url "https://api.bmwgroup.com/otpclearance/api/thirdparty/v1/test/applications/containers/"
   @otpdatadelivery_base_url "https://api.bmwgroup.com/otpdatadelivery/api/thirdparty/v1/test/clearances/"
   @otpcapability_base_url "https://api.bmwgroup.com/otpcapability/api/thirdparty/v1/test/getCapabilities"
+  
   @test_clearance_id "11111111-1111-1111-1111-111111111111"
-  @headers ["KeyId": @api_key, "Content-Type": "application/json"]
+  @headers [KeyId: @api_key, "Content-Type": "application/json"]
 
   def request_data_access_clearance(vin, container_id) do
     (@otpclearance_base_url <> container_id <> "/vehicles/" <> vin <> "/clearances")

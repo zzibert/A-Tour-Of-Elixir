@@ -7,5 +7,7 @@ defmodule BmwUmbrellaWeb.Router do
 
   scope "/api", BmwUmbrellaWeb do
     pipe_through :api
+
+    resources "/users", UserController,  only: [:show, :index]
   end
 end
