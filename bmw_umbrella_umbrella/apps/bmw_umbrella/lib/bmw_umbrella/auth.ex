@@ -32,6 +32,13 @@ defmodule BmwUmbrella.Auth do
     Repo.delete(user)
   end
 
+  def delete_user_by_id(id) do
+    User
+    |> where([u], u.id == ^id)
+    |> Repo.one()
+    |> Repo.delete()
+  end
+
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
