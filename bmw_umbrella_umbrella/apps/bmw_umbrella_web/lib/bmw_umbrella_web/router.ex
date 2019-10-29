@@ -1,6 +1,8 @@
 defmodule BmwUmbrellaWeb.Router do
   use BmwUmbrellaWeb, :router
 
+  # alias BmwUmbrellaWeb.Api.UserController
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -8,6 +10,7 @@ defmodule BmwUmbrellaWeb.Router do
   scope "/api", BmwUmbrellaWeb do
     pipe_through :api
 
-    resources "/users", UserController,  only: [:show, :index]
+    get "/users", UserController, :index
+    post "/users", UserController, :receive_vin_and_token
   end
 end

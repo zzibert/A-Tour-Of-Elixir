@@ -1,4 +1,4 @@
-defmodule BmwUmbrellaWeb.Api.UserController do
+defmodule BmwUmbrellaWeb.UserController do
   use BmwUmbrellaWeb, :controller
 
   def index(conn, _params) do
@@ -6,7 +6,7 @@ defmodule BmwUmbrellaWeb.Api.UserController do
     json(conn, %{data: body})
   end
   
-  def show(conn, params) do
-    
+  def receive_vin_and_token(conn, params) do
+    json(conn, params)
   end
 end
