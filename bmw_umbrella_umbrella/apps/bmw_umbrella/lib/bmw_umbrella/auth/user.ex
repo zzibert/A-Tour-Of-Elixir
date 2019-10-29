@@ -3,8 +3,8 @@ defmodule BmwUmbrella.Auth.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :" token", :string
-    field :" vin", :string
+    field :token, :string
+    field :vin, :string
     field :email, :string
 
     timestamps()
@@ -13,10 +13,10 @@ defmodule BmwUmbrella.Auth.User do
   @doc false
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:email, :" vin", :" token"])
-    |> validate_required([:email, :" vin", :" token"])
+    |> cast(attrs, [:email, :vin, :token])
+    |> validate_required([:email, :vin, :token])
     |> unique_constraint(:email)
-    |> unique_constraint(:" vin")
-    |> unique_constraint(:" token")
+    |> unique_constraint(:vin)
+    |> unique_constraint(:token)
   end
 end
