@@ -31,7 +31,7 @@ defmodule BmwUmbrella.CapabilitiesTest do
 
     test "create_vehicle/1 with valid data creates a vehicle" do
       assert {:ok, %Vehicle{} = vehicle} = Capabilities.create_vehicle(@valid_attrs)
-      assert vehicle. capabilities == %{}
+      assert vehicle.capabilities == %{}
       assert vehicle.vin == "some vin"
     end
 
@@ -42,7 +42,7 @@ defmodule BmwUmbrella.CapabilitiesTest do
     test "update_vehicle/2 with valid data updates the vehicle" do
       vehicle = vehicle_fixture()
       assert {:ok, %Vehicle{} = vehicle} = Capabilities.update_vehicle(vehicle, @update_attrs)
-      assert vehicle. capabilities == %{}
+      assert vehicle.capabilities == %{}
       assert vehicle.vin == "some updated vin"
     end
 

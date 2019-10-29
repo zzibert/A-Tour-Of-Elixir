@@ -7,7 +7,11 @@ defmodule BmwUmbrella.AuthTest do
     alias BmwUmbrella.Auth.User
 
     @valid_attrs %{" token": "some  token", " vin": "some  vin", email: "some email"}
-    @update_attrs %{" token": "some updated  token", " vin": "some updated  vin", email: "some updated email"}
+    @update_attrs %{
+      " token": "some updated  token",
+      " vin": "some updated  vin",
+      email: "some updated email"
+    }
     @invalid_attrs %{" token": nil, " vin": nil, email: nil}
 
     def user_fixture(attrs \\ %{}) do
@@ -31,8 +35,8 @@ defmodule BmwUmbrella.AuthTest do
 
     test "create_user/1 with valid data creates a user" do
       assert {:ok, %User{} = user} = Auth.create_user(@valid_attrs)
-      assert user. token == "some  token"
-      assert user. vin == "some  vin"
+      assert user.token == "some  token"
+      assert user.vin == "some  vin"
       assert user.email == "some email"
     end
 
@@ -43,8 +47,8 @@ defmodule BmwUmbrella.AuthTest do
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
       assert {:ok, %User{} = user} = Auth.update_user(user, @update_attrs)
-      assert user. token == "some updated  token"
-      assert user. vin == "some updated  vin"
+      assert user.token == "some updated  token"
+      assert user.vin == "some updated  vin"
       assert user.email == "some updated email"
     end
 

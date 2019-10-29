@@ -4,7 +4,7 @@ defmodule BmwUmbrella.ClientApi do
   @otpclearance_base_url "https://api.bmwgroup.com/otpclearance/api/thirdparty/v1/test/applications/containers/"
   @otpdatadelivery_base_url "https://api.bmwgroup.com/otpdatadelivery/api/thirdparty/v1/test/clearances/"
   @otpcapability_base_url "https://api.bmwgroup.com/otpcapability/api/thirdparty/v1/test/getCapabilities"
-  
+
   @test_clearance_id "11111111-1111-1111-1111-111111111111"
   @headers [KeyId: @api_key, "Content-Type": "application/json"]
 

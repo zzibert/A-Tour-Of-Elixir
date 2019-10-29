@@ -9,7 +9,7 @@ defmodule BmwUmbrella.Auth do
   alias BmwUmbrella.Auth.User
   alias BmwUmbrella.Auth.Token
 
- # USERS ""
+  # USERS ""
   def list_users do
     Repo.all(User)
   end
@@ -43,7 +43,7 @@ defmodule BmwUmbrella.Auth do
     User.changeset(user, %{})
   end
 
-# TOKENS #
+  # TOKENS #
 
   def list_tokens do
     Repo.all(Token)
@@ -76,5 +76,4 @@ defmodule BmwUmbrella.Auth do
   def change_token(%Token{} = token) do
     Token.changeset(token, %{})
   end
-
 end
