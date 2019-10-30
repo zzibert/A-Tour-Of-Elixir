@@ -37,6 +37,12 @@ defmodule BmwUmbrella.Capabilities do
   """
   def get_vehicle!(id), do: Repo.get!(Vehicle, id)
 
+  def get_vehicle_by_vin!(vin) do
+    Vehicle
+    |> where([v], v.vin == ^vin)
+    |> Repo.one()
+  end
+
   @doc """
   Creates a vehicle.
 
