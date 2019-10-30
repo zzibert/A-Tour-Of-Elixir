@@ -11,7 +11,9 @@ defmodule BmwUmbrellaWeb.UserController do
   def receive_vin_and_token(conn, params) do
     case BusinessLogic.valid_user?(params) do
       true ->
-        json(conn, %{user: "valid"})
+        
+        response = BusinessLogic.check_if_vehicle_in_db(params["vin"])
+        json(conn, response)
 
       false ->
         json(conn, %{user: "invalid"})
