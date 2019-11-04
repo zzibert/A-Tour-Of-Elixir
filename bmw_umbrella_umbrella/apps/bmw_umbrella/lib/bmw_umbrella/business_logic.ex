@@ -34,8 +34,11 @@ defmodule BmwUmbrella.BusinessLogic do
   def check_if_vehicle_in_db(vin) do
     case Capabilities.get_vehicle_by_vin!(vin) do
       nil ->
-        {:ok, capabilities} = ClientApi.check_if_vehicle_is_bmw_cardata_capable(vin) 
-        vehicle = [vin: vin] ++ for {key, value} <- capabilities, do: {String.to_atom(Macro.underscore(key)), value}
+        {:ok, capabilities} = ClientApi.check_if_vehicle_is_bmw_cardata_capable(vin)
+
+        vehicle =
+          [vin: vin] ++
+            for {key, value} <- capabilities, do: {String.to_atom(Macro.underscore(key)), value}
 
         Enum.into(vehicle, %{})
         |> Capabilities.create_vehicle()
@@ -44,8 +47,6 @@ defmodule BmwUmbrella.BusinessLogic do
         "vehicle already in the database"
     end
   end
-
-
 
   def check_if_vin_and_container_compatible(vin, container_id) do
     ClientApi.check_if_vehicle_is_bmw_cardata_capable_and_availability_types_of_keys()
