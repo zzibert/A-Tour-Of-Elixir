@@ -6,11 +6,11 @@ defmodule BmwUmbrella.Repo.Migrations.CreateVehicleHelpers do
       add :vin, :string
       add :token, :string
       add :clearance_id, :string
-      add :is_telematics_capable, :boolean, default: false, null: false
-      add :has_activated_sim, :boolean, default: false, null: false
-      add :is_mapped_to_customer, :boolean, default: false, null: false
-      add :market_is_supported, :boolean, default: false, null: false
-      add :brand_is_supported, :boolean, default: false, null: false
+      add :vehicle_is_telematics_capable, :boolean, default: false, null: false
+      add :vehicle_has_activated_sim, :boolean, default: false, null: false
+      add :vehicle_is_mapped_to_customer, :boolean, default: false, null: false
+      add :vehicle_market_is_supported, :boolean, default: false, null: false
+      add :vehicle_brand_is_supported, :boolean, default: false, null: false
 
       timestamps()
     end

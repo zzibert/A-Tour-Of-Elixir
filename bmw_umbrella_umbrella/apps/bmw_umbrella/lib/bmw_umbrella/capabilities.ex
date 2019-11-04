@@ -6,7 +6,7 @@ defmodule BmwUmbrella.Capabilities do
   import Ecto.Query, warn: false
   alias BmwUmbrella.Repo
 
-  alias BmwUmbrella.Capabilities.Vehicle
+  alias BmwUmbrella.Capabilities.VehicleHelpers
 
   @doc """
   Returns the list of vehicles.
@@ -18,7 +18,7 @@ defmodule BmwUmbrella.Capabilities do
 
   """
   def list_vehicles do
-    Repo.all(Vehicle)
+    Repo.all(VehicleHelpers)
   end
 
   @doc """
@@ -35,10 +35,10 @@ defmodule BmwUmbrella.Capabilities do
       ** (Ecto.NoResultsError)
 
   """
-  def get_vehicle!(id), do: Repo.get!(Vehicle, id)
+  def get_vehicle!(id), do: Repo.get!(VehicleHelpers, id)
 
   def get_vehicle_by_vin!(vin) do
-    Vehicle
+    VehicleHelpers
     |> where([v], v.vin == ^vin)
     |> Repo.one()
   end
@@ -56,7 +56,7 @@ defmodule BmwUmbrella.Capabilities do
 
   """
   def create_vehicle(attrs \\ %{}) do
-    %Vehicle{}
+    %VehicleHelpers{}
     |> Vehicle.changeset(attrs)
     |> Repo.insert()
   end
@@ -73,9 +73,9 @@ defmodule BmwUmbrella.Capabilities do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_vehicle(%Vehicle{} = vehicle, attrs) do
+  def update_vehicle(%VehicleHelpers{} = vehicle, attrs) do
     vehicle
-    |> Vehicle.changeset(attrs)
+    |> VehicleHelpers.changeset(attrs)
     |> Repo.update()
   end
 
@@ -91,7 +91,7 @@ defmodule BmwUmbrella.Capabilities do
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_vehicle(%Vehicle{} = vehicle) do
+  def delete_vehicle(%VehicleHelpers{} = vehicle) do
     Repo.delete(vehicle)
   end
 
@@ -104,7 +104,7 @@ defmodule BmwUmbrella.Capabilities do
       %Ecto.Changeset{source: %Vehicle{}}
 
   """
-  def change_vehicle(%Vehicle{} = vehicle) do
-    Vehicle.changeset(vehicle, %{})
+  def change_vehicle(%VehicleHelpers{} = vehicle) do
+    VehicleHelpers.changeset(vehicle, %{})
   end
 end
