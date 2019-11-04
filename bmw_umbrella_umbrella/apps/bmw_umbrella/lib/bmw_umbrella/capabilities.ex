@@ -95,6 +95,13 @@ defmodule BmwUmbrella.Capabilities do
     Repo.delete(vehicle)
   end
 
+  def delete_vehicle_by_id(id) do
+    VehicleHelpers
+    |> where([v], v.id == ^id)
+    |> Repo.one()
+    |> Repo.delete()
+  end
+
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking vehicle changes.
 
