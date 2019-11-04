@@ -45,7 +45,9 @@ defmodule BmwUmbrella.BusinessLogic do
     end
   end
 
-  # def check_if_vin_and_container_compatible(vin, container_id) do
-    
-  # end
+
+
+  def check_if_vin_and_container_compatible(vin, container_id) do
+    ClientApi.check_if_vehicle_is_bmw_cardata_capable_and_availability_types_of_keys()
+  end
 end
