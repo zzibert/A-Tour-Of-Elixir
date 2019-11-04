@@ -22,21 +22,19 @@ defmodule BmwUmbrella.Capabilities.VehicleHelpers do
       :vin,
       :token,
       :clearance_id,
-      :is_telematics_capable,
-      :has_activated_sim,
-      :is_mapped_to_customer,
-      :market_is_supported,
-      :brand_is_supported
+      :vehicle_is_telematics_capable,
+      :vehicle_has_activated_sim,
+      :vehicle_is_mapped_to_customer,
+      :vehicle_market_is_supported,
+      :vehicle_brand_is_supported
     ])
     |> validate_required([
       :vin,
-      :token,
-      :clearance_id,
-      :is_telematics_capable,
-      :has_activated_sim,
-      :is_mapped_to_customer,
-      :market_is_supported,
-      :brand_is_supported
+      :vehicle_is_telematics_capable,
+      :vehicle_has_activated_sim,
+      :vehicle_is_mapped_to_customer,
+      :vehicle_market_is_supported,
+      :vehicle_brand_is_supported
     ])
   end
 end

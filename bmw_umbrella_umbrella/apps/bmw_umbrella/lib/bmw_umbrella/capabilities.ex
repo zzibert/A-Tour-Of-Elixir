@@ -57,7 +57,7 @@ defmodule BmwUmbrella.Capabilities do
   """
   def create_vehicle(attrs \\ %{}) do
     %VehicleHelpers{}
-    |> Vehicle.changeset(attrs)
+    |> VehicleHelpers.changeset(attrs)
     |> Repo.insert()
   end
 
