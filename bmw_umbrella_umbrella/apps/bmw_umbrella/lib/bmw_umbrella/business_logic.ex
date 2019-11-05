@@ -30,7 +30,8 @@ defmodule BmwUmbrella.BusinessLogic do
         {:ok, capabilities} = ClientApi.check_if_vehicle_is_bmw_cardata_capable(vin)
 
         vehicle =
-          [vin: vin] ++ [token: token] ++
+          [vin: vin] ++
+            [token: token] ++
             for {key, value} <- capabilities, do: {String.to_atom(Macro.underscore(key)), value}
 
         Enum.into(vehicle, %{})
@@ -42,7 +43,14 @@ defmodule BmwUmbrella.BusinessLogic do
   end
 
   def vin_container_compatibility?(vin, container_id) do
-    {:ok, response} = ClientApi.check_if_vehicle_is_bmw_cardata_capable_and_availability_types_of_keys(vin, container_id)
-    Enum.all?(response["containerVinCapability"], fn property -> property["availability"] != "NOT_AVAILABLE" end)
+    {:ok, response} =
+      ClientApi.check_if_vehicle_is_bmw_cardata_capable_and_availability_types_of_keys(
+        vin,
+        container_id
+      )
+
+    Enum.all?(response["containerVinCapability"], fn property ->
+      property["availability"] != "NOT_AVAILABLE"
+    end)
   end
 end

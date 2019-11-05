@@ -12,5 +12,7 @@ defmodule BmwUmbrellaWeb.Router do
 
     get "/users", UserController, :index
     post "/users", UserController, :receive_vin_and_token
+
+    post "/containers", ContainerController, :receive_vin_and_container_id
   end
 end
