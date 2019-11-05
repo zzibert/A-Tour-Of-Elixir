@@ -5,8 +5,11 @@ defmodule BmwUmbrella.Application do
 
   use Application
 
+  import Supervisor.Spec
+
   def start(_type, _args) do
     children = [
+      # supervisor(BmwUmbrella.VehicleSupervisor, []),
       BmwUmbrella.Repo
     ]
 
