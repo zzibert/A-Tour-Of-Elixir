@@ -1,4 +1,4 @@
-defmodule BmwUmbrella.Vehicle do
+defmodule BmwUmbrella.BusinessLogic.VinWorker do
   use GenServer
 
   alias BmwUmbrella.ClientApi

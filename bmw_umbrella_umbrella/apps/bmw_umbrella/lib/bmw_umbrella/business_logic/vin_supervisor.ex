@@ -1,4 +1,4 @@
-defmodule BmwUmbrella.VehicleSupervisor do
+defmodule BmwUmbrella.BusinessLogic.VinSupervisor do
   use Supervisor
 
    alias BmwUmbrella.Vehicle
